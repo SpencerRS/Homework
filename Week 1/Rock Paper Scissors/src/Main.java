@@ -25,21 +25,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
-    // [MAKE THIS AN ARRAYLIST]
-    String[] winnerHistory;
+
+    // Create ArrayList
+    ArrayList<String> userWins = new ArrayList<>();
 
     public static void main(String[] args) {
-// Print out initial prompt
-        System.out.println("Type Play to play Rock, Paper, Scissors!");
-//        System.out.println("Type Play to play Ultimate Rock, Paper, Scissors");
-        System.out.println("Or type History to see the history of your recent battles!");
-        System.out.println("You may also type Quit to quit...");
+        System.out.println("Ultimate Rock, Paper, Scissors");
+        System.out.println("Developed by $pizzy Ri¢h");
         //[THIS SHOULD BE RECURSIVE]
         ask();
     }
 
     public static void rps() {
-        System.out.println("Welcome to ROCK, PAPER, SCISSORS! Select your weapon...");
+    // [FIX THIS LATER]
+//        System.out.println("Round " + userWins.size());
+        System.out.println("The battle is about to begin. Select your weapon...");
         System.out.println("Type Rock, Paper or Scissors.");
 //        System.out.println("Welcome to ULTIMATE ROCK, PAPER, SCISSORS! Select your weapon...");
 //        System.out.println("Type Rock, Gun, Lightning, Devil, Dragon, Water, Air, Paper, Sponge, Wolf, Tree, Human, Snake, Scissors or Fire");
@@ -89,34 +89,46 @@ public class Main {
         if (userWeapon == 0) { // Rock
             if (compWeapon == 0) { //vs Rock
                 System.out.println("It's a tie! Rock vs rock!");
+                System.out.println("Go again!");
+                rps();
             }
             if (compWeapon == 1) { // vs Paper
                 System.out.println("You lose! Rock vs paper!");
+                //userWins.add(false);
             }
             if (compWeapon == 2) { // vs Scissors
                 System.out.println("You win! Rock vs scissors!");
+                //userWins.add(true);
             }
         }
         if (userWeapon == 1) { // Paper
             if (compWeapon == 0) { //vs Rock
                 System.out.println("You win! Paper vs rock!");
+                //userWins.add(true);
             }
             if (compWeapon == 1) { // vs Paper
                 System.out.println("It's a tie! Paper vs paper!");
+                System.out.println("Go again!");
+                rps();
             }
             if (compWeapon == 2) { // vs Scissors
                 System.out.println("You lose! Paper vs scissors!");
+                //userWins.add(false);
             }
         }
         if (userWeapon == 2) { // Scissors
             if (compWeapon == 0) { //vs Rock
                 System.out.println("You lose! Scissors vs rock!");
+                //userWins.add(false);
             }
             if (compWeapon == 1) { // vs Paper
                 System.out.println("You win! Scissors vs paper!");
+                //userWins.add(true);
             }
             if (compWeapon == 2) { // vs Scissors
                 System.out.println("It's a tie! Scissors vs scissors!");
+                System.out.println("Go again!");
+                rps();
             }
         }
         ask();
@@ -130,6 +142,11 @@ public class Main {
 
     // Seek player input to Play, History or Quit
     public static void ask() {
+        // Print out initial prompt
+        System.out.println("Type Play to play Rock, Paper, Scissors!");
+//        System.out.println("Type Play to play Ultimate Rock, Paper, Scissors");
+        System.out.println("Or type History to see the history of your recent battles!");
+        System.out.println("You may also type Quit to quit...");
         String userChoice = grabInput();
         String lUserChoice = userChoice.toLowerCase();
         if (lUserChoice.equals("play")) {
@@ -137,6 +154,7 @@ public class Main {
         }
         if (lUserChoice.equals("history")) {
             // [INSERT HISTORY METHOD]
+            System.out.println("");
         }
         if (lUserChoice.equals("quit")) {
             askAgain();
