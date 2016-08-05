@@ -20,14 +20,10 @@
 //Both Basic and Ultimate output either "You won!" "You lost :(" or "It was a tie!"
 
 import java.util.Scanner;
-// Store history in ArrayList
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
 
-    // Create ArrayList
-    ArrayList<String> userWins = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println("Ultimate Rock, Paper, Scissors");
@@ -37,10 +33,9 @@ public class Main {
     }
 
     public static void rps() {
-    // [FIX THIS LATER]
-//        System.out.println("Round " + userWins.size());
-        System.out.println("The battle is about to begin. Select your weapon...");
-        System.out.println("Type Rock, Paper or Scissors.");
+
+        System.out.println("The battle is about to begin.\n Select your weapon...");
+        System.out.println("Type Rock, Paper or Scissors");
 //        System.out.println("Welcome to ULTIMATE ROCK, PAPER, SCISSORS! Select your weapon...");
 //        System.out.println("Type Rock, Gun, Lightning, Devil, Dragon, Water, Air, Paper, Sponge, Wolf, Tree, Human, Snake, Scissors or Fire");
 // Assign weapon numbers
@@ -74,11 +69,15 @@ public class Main {
         if (lUserChoice.equals("rock")) {
             userWeapon = rock;
         }
-        if (lUserChoice.equals("paper")) {
+        else if (lUserChoice.equals("paper")) {
             userWeapon = paper;
         }
-        if (lUserChoice.equals("scissors")) {
+       else  if (lUserChoice.equals("scissors")) {
             userWeapon = scissors;
+        }
+        else {
+            System.out.println("You want to fight with what??? \n Let's try that again...");
+            rps();
         }
 // Capture computer choice; 3 for regular, 15 for ultimate
         int compWeapon = rando.nextInt(3);
@@ -134,6 +133,8 @@ public class Main {
         ask();
     }
 
+
+
     //Grab user choice
     public static String grabInput() {
         Scanner scan = new Scanner(System.in);
@@ -145,7 +146,7 @@ public class Main {
         // Print out initial prompt
         System.out.println("Type Play to play Rock, Paper, Scissors!");
 //        System.out.println("Type Play to play Ultimate Rock, Paper, Scissors");
-        System.out.println("Or type History to see the history of your recent battles!");
+        System.out.println("Or type History to see the history of your 5 most recent battles!");
         System.out.println("You may also type Quit to quit...");
         String userChoice = grabInput();
         String lUserChoice = userChoice.toLowerCase();
