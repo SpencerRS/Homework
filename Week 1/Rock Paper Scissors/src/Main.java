@@ -7,18 +7,21 @@
 //Your work must:
 //
 //  [X]   Have a main menu with options to enter "play" or "history":
+// I also added quit.
 //  [X]   If the user enters "play", they should be able to play Rock Paper Scissors against the computer
-//  [0]   If the user enters "history", the program should display previous game history
-//  [0]   Handle invalid user input
-//  [0]   Use Arrays or ArrayLists to store game history
+//  [X]   If the user enters "history", the program should display previous game history
+//  [X]   Handle invalid user input
+//  [X]   Use Arrays or ArrayLists to store game history
 //Bonus:
 //  [X]   Handle incorrect capitalization of otherwise valid user input (rock, Rock, RoCk, ROCK, etc.)
+//  [0]   Ultimate Rock, Paper, Scissors instead of regular RPS.
 
 // Basic RPS has 3 inputs; Ultimate RPS has 15
 // Basic RPS inputs = Rock, Paper and Scissors
 //Ultimate RPS inputs = Rock, Gun, Lightning, Devil, Dragon, Water, Air, Paper, Sponge, Wolf, Tree, Human, Snake, Scissors and Fire
 //Both Basic and Ultimate output either "You won!" "You lost :(" or "It was a tie!"
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -28,7 +31,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Ultimate Rock, Paper, Scissors");
         System.out.println("Developed by $pizzy Ri¢h");
-        //[THIS SHOULD BE RECURSIVE]
+// Make recursive
         ask();
     }
 
@@ -58,6 +61,9 @@ public class Main {
 //        int scissors = 13;
 //        int fire = 14;
 
+// Use an int to track who won
+        int winner;
+
 
 // Create a random generator and user weapon variable
         Random rando = new Random();
@@ -68,14 +74,11 @@ public class Main {
         String lUserChoice = userChoice.toLowerCase();
         if (lUserChoice.equals("rock")) {
             userWeapon = rock;
-        }
-        else if (lUserChoice.equals("paper")) {
+        } else if (lUserChoice.equals("paper")) {
             userWeapon = paper;
-        }
-       else  if (lUserChoice.equals("scissors")) {
+        } else if (lUserChoice.equals("scissors")) {
             userWeapon = scissors;
-        }
-        else {
+        } else {
             System.out.println("You want to fight with what??? \n Let's try that again...");
             rps();
         }
@@ -93,17 +96,20 @@ public class Main {
             }
             if (compWeapon == 1) { // vs Paper
                 System.out.println("You lose! Rock vs paper!");
-                //userWins.add(false);
+                winner = 0;
+                logHistory(0, 1, 0);
             }
             if (compWeapon == 2) { // vs Scissors
                 System.out.println("You win! Rock vs scissors!");
-                //userWins.add(true);
+                winner = 1;
+                logHistory(0, 2, 1);
             }
         }
         if (userWeapon == 1) { // Paper
             if (compWeapon == 0) { //vs Rock
                 System.out.println("You win! Paper vs rock!");
-                //userWins.add(true);
+                winner = 1;
+                logHistory(1, 0, 1);
             }
             if (compWeapon == 1) { // vs Paper
                 System.out.println("It's a tie! Paper vs paper!");
@@ -112,17 +118,21 @@ public class Main {
             }
             if (compWeapon == 2) { // vs Scissors
                 System.out.println("You lose! Paper vs scissors!");
-                //userWins.add(false);
+                winner = 0;
+                logHistory(1, 2, 0);
             }
         }
         if (userWeapon == 2) { // Scissors
             if (compWeapon == 0) { //vs Rock
                 System.out.println("You lose! Scissors vs rock!");
-                //userWins.add(false);
+                winner = 0;
+                logHistory(2, 0, 0);
             }
             if (compWeapon == 1) { // vs Paper
                 System.out.println("You win! Scissors vs paper!");
-                //userWins.add(true);
+                winner = 1;
+                logHistory(2, 1, 1);
+
             }
             if (compWeapon == 2) { // vs Scissors
                 System.out.println("It's a tie! Scissors vs scissors!");
@@ -134,12 +144,15 @@ public class Main {
     }
 
 
-
     //Grab user choice
     public static String grabInput() {
         Scanner scan = new Scanner(System.in);
         return scan.next();
     }
+
+//    public static String results(String mUserChoice, String mCompChoice, String mWinner, String mTimeStamp) {
+//Round round = new Round();
+//    }
 
     // Seek player input to Play, History or Quit
     public static void ask() {
@@ -150,15 +163,46 @@ public class Main {
         System.out.println("You may also type Quit to quit...");
         String userChoice = grabInput();
         String lUserChoice = userChoice.toLowerCase();
+// TODO: Look into switch statements
         if (lUserChoice.equals("play")) {
             rps();
-        }
-        if (lUserChoice.equals("history")) {
-            // [INSERT HISTORY METHOD]
-            System.out.println("");
-        }
-        if (lUserChoice.equals("quit")) {
+        } else if (lUserChoice.equals("history")) {
+// TODO [INSERT HISTORY METHOD]
+            for (int i = 0; i < history.size(); i += 3) {
+                int pChoice = history.get(i);
+                int cChoice = history.get(i + 1);
+                int winner = history.get(i + 2);
+                String player;
+                String comp;
+                String won;
+                if (pChoice == 0) {
+                    player = "rock ";
+                } else if (pChoice == 1) {
+                    player = "paper ";
+                } else {
+                    player = "scissors ";
+                }
+                if (cChoice == 0) {
+                    comp = "rock ";
+                } else if (cChoice == 1) {
+                    comp = "paper ";
+                } else {
+                    comp = "scissors ";
+                }
+                if (winner == 0) {
+                    won = "The computer ";
+                } else {
+                    won = "You ";
+                }
+
+                System.out.println(won + "won when you used " + player + "against the computer's " + comp);
+                ask();
+            }
+        } else if (lUserChoice.equals("quit")) {
             askAgain();
+        } else {
+            System.out.println("You want to what? \n Let's try this again...");
+            ask();
         }
     }
 
@@ -169,9 +213,19 @@ public class Main {
         String lUserChoice = userChoice.toLowerCase();
         if (lUserChoice == "yes") {
             System.exit(0);
-        }
-        if (lUserChoice == "no") {
-            rps();
+        } else if (lUserChoice == "no") {
+            ask();
+        } else {
+            System.out.println("Check your spelling and try again.");
         }
     }
+
+    public static ArrayList<Integer> history = new ArrayList();
+
+    public static void logHistory(int playerWeapon, int compWeapon, int winner) {
+        history.add(playerWeapon);
+        history.add(compWeapon);
+        history.add(winner);
+    }
+
 }
