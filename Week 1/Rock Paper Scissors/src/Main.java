@@ -21,6 +21,7 @@
 //Ultimate RPS inputs = Rock, Gun, Lightning, Devil, Dragon, Water, Air, Paper, Sponge, Wolf, Tree, Human, Snake, Scissors and Fire
 //Both Basic and Ultimate output either "You won!" "You lost :(" or "It was a tie!"
 
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -74,67 +75,92 @@ public class Main {
         String lUserChoice = userChoice.toLowerCase();
         if (lUserChoice.equals("rock")) {
             userWeapon = rock;
+//        } else if (lUserChoice.equals("gun")) {
+//            userWeapon = gun;
+//        } else if (lUserChoice.equals("lightning")) {
+//            userWeapon = lightning;
+//        } else if (lUserChoice.equals("devil")) {
+//            userWeapon = devil;
+//        } else if (lUserChoice.equals("dragon")) {
+//            userWeapon = dragon;
+//        } else if (lUserChoice.equals("water")) {
+//            userWeapon = water;
+//        } else if (lUserChoice.equals("air")) {
+//            userWeapon = air;
         } else if (lUserChoice.equals("paper")) {
             userWeapon = paper;
+//        } else if (lUserChoice.equals("sponge")) {
+//            userWeapon = sponge;
+//        } else if (lUserChoice.equals("wolf")) {
+//            userWeapon = wolf;
+//        } else if (lUserChoice.equals("tree")) {
+//            userWeapon = tree;
+//        } else if (lUserChoice.equals("human")) {
+//            userWeapon = human;
+//        } else if (lUserChoice.equals("snake")) {
+//            userWeapon = snake;
         } else if (lUserChoice.equals("scissors")) {
             userWeapon = scissors;
+//        } else if (lUserChoice.equals("fire")) {
+//            userWeapon = fire;
         } else {
             System.out.println("You want to fight with what??? \n Let's try that again...");
             rps();
         }
 // Capture computer choice; 3 for regular, 15 for ultimate
         int compWeapon = rando.nextInt(3);
-//        String compWeapon=rando.nextInt(15);
+//        int compWeapon = rando.nextInt(15);
 
 // Check for ties
 //        if (userWeapon == compWeapon) {System.out.println("It was a tie!");}
+// TODO: Implament Ultimate list of "weapons" using || (or)
         if (userWeapon == 0) { // Rock
-            if (compWeapon == 0) { //vs Rock
+            if (compWeapon == 0) { //vs Rock AKA TIE
                 System.out.println("It's a tie! Rock vs rock!");
                 System.out.println("Go again!");
                 rps();
             }
-            if (compWeapon == 1) { // vs Paper
+            if (compWeapon == 1) { // vs Paper AKA LOSE
                 System.out.println("You lose! Rock vs paper!");
                 winner = 0;
                 logHistory(0, 1, 0);
             }
-            if (compWeapon == 2) { // vs Scissors
+            if (compWeapon == 2) { // vs Scissors AKA WIN
                 System.out.println("You win! Rock vs scissors!");
                 winner = 1;
                 logHistory(0, 2, 1);
             }
         }
         if (userWeapon == 1) { // Paper
-            if (compWeapon == 0) { //vs Rock
+            if (compWeapon == 0) { //vs Rock AKA WIN
                 System.out.println("You win! Paper vs rock!");
                 winner = 1;
                 logHistory(1, 0, 1);
             }
-            if (compWeapon == 1) { // vs Paper
+            if (compWeapon == 1) { // vs Paper AKA TIE
                 System.out.println("It's a tie! Paper vs paper!");
                 System.out.println("Go again!");
                 rps();
             }
-            if (compWeapon == 2) { // vs Scissors
+            if (compWeapon == 2) { // vs Scissors AKA LOSE
                 System.out.println("You lose! Paper vs scissors!");
                 winner = 0;
                 logHistory(1, 2, 0);
             }
         }
         if (userWeapon == 2) { // Scissors
-            if (compWeapon == 0) { //vs Rock
+            if (compWeapon == 0) { //vs Rock AKA LOSE
                 System.out.println("You lose! Scissors vs rock!");
                 winner = 0;
                 logHistory(2, 0, 0);
             }
-            if (compWeapon == 1) { // vs Paper
+            if (compWeapon == 1) { // vs Paper AKA WIN
                 System.out.println("You win! Scissors vs paper!");
                 winner = 1;
                 logHistory(2, 1, 1);
 
             }
-            if (compWeapon == 2) { // vs Scissors
+            if (compWeapon == 2) { // vs Scissors AKA TIE
                 System.out.println("It's a tie! Scissors vs scissors!");
                 System.out.println("Go again!");
                 rps();
@@ -150,10 +176,6 @@ public class Main {
         return scan.next();
     }
 
-//    public static String results(String mUserChoice, String mCompChoice, String mWinner, String mTimeStamp) {
-//Round round = new Round();
-//    }
-
     // Seek player input to Play, History or Quit
     public static void ask() {
         // Print out initial prompt
@@ -163,11 +185,11 @@ public class Main {
         System.out.println("You may also type Quit to quit...");
         String userChoice = grabInput();
         String lUserChoice = userChoice.toLowerCase();
-// TODO: Look into switch statements
+
         if (lUserChoice.equals("play")) {
             rps();
+
         } else if (lUserChoice.equals("history")) {
-// TODO [INSERT HISTORY METHOD]
             for (int i = 0; i < history.size(); i += 3) {
                 int pChoice = history.get(i);
                 int cChoice = history.get(i + 1);
@@ -181,13 +203,71 @@ public class Main {
                     player = "paper ";
                 } else {
                     player = "scissors ";
+//                }else if (pChoice == 1) {
+//                    player = "gun";
+//                }else if (pChoice == 2) {
+//                    player = "lightning";
+//                }else if (pChoice == 3) {
+//                    player = "devil";
+//                }else if (pChoice == 4) {
+//                    player = "dragon";
+//                }else if (pChoice == 5) {
+//                    player = "water";
+//                }else if (pChoice == 6) {
+//                    player = "air";
+//                }else if (pChoice == 7) {
+//                    player = "paper";
+//                }else if (pChoice == 8) {
+//                    player = "sponge";
+//                }else if (pChoice == 9) {
+//                    player = "wolfe";
+//                }else if (pChoice == 10) {
+//                    player = "tree";
+//                }else if (pChoice == 11) {
+//                    player = "human";
+//                }else if (pChoice == 12) {
+//                    player = "snake";
+//                }else if (pChoice == 13) {
+//                    player = "scissors";
+//                }else {
+//                    player = "fire";
+//                }
                 }
+
                 if (cChoice == 0) {
                     comp = "rock ";
                 } else if (cChoice == 1) {
                     comp = "paper ";
                 } else {
                     comp = "scissors ";
+//                }else if (cChoice == 1) {
+//                    comp = "gun";
+//                }else if (cChoice == 2) {
+//                    comp = "lightning";
+//                }else if (cChoice == 3) {
+//                    comp = "devil";
+//                }else if (cChoice == 4) {
+//                    comp = "dragon";
+//                }else if (cChoice == 5) {
+//                    comp = "water";
+//                }else if (cChoice == 6) {
+//                    comp = "air";
+//                }else if (cChoice == 7) {
+//                    comp = "paper";
+//                }else if (cChoice == 8) {
+//                    comp = "sponge";
+//                }else if (cChoice == 9) {
+//                    comp = "wolfe";
+//                }else if (cChoice == 10) {
+//                    comp = "tree";
+//                }else if (cChoice == 11) {
+//                    comp = "human";
+//                }else if (cChoice == 12) {
+//                    comp = "snake";
+//                }else if (cChoice == 13) {
+//                    comp = "scissors";
+//                }else {
+//                    comp = "fire";
                 }
                 if (winner == 0) {
                     won = "The computer ";
