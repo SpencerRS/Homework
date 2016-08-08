@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<movie_collection xmlns:android="http://movies.com">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+
+    <Starwars_IV_A_New_Hope>
+        android:id="the id"
+        android:title="Starwars_IV_A_New_Hope"
+        android:description="the first of the series"
+
+        <Showtimes>
+
+        <Showtime>
+            android:time="12:00"</Showtime>
+
+        <Showtime>
+            android:time="1:30"</Showtime>
+
+        <Showtime>
+            android:time="3:00"</Showtime>
+
+        <Empty />
+
+        <Empty />
+    </Starwars_IV_A_New_Hope>
+
+    <Starwars_V_Empire_Strikes_Back>
+        android:id="the id"
+        android:title="Starwars_V_Empire_Strikes_Back"
+        android:description="the second of the series"
+
+        <Showtimes>
+
+        <Showtime>
+            android:time="12:00"</Showtime>
+
+        <Showtime>
+            android:time="1:30"</Showtime>
+
+        <Showtime>
+            android:time="3:00"</Showtime>
+
+        <Empty />
+
+        <Empty />
+    </Starwars_V_Empire_Strikes_Back>
+
+    <Starwars_VI_Return_of_The_Jedi>
+        android:id="the id"
+        android:title="Starwars_VI_Return_of_The_Jedi"
+        android:description="the third of the series"
+
+        <Showtimes>
+
+        <Showtime>
+            android:time="12:00"</Showtime>
+
+        <Showtime>
+            android:time="1:30"</Showtime>
+
+        <Showtime>
+            android:time="3:00"</Showtime>
+
+        <Empty />
+
+        <Empty />
+    </Starwars_VI_Return_of_The_Jedi>
+
+    <Starwars_I_Phantom_Menace>
+        android:id="the id"
+        android:title="Starwars_I_Phantom_Menace"
+        android:description="the fourth of the series"
+
+        <Showtimes>
+
+        <Showtime>
+            android:time="12:00"</Showtime>
+
+        <Showtime>
+            android:time="1:30"</Showtime>
+
+        <Showtime>
+            android:time="3:00"</Showtime>
+
+        <Empty />
+
+        <Empty />
+    </Starwars_I_Phantom_Menace>
+</movie_collection>

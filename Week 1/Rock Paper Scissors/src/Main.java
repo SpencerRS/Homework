@@ -21,7 +21,6 @@
 //Ultimate RPS inputs = Rock, Gun, Lightning, Devil, Dragon, Water, Air, Paper, Sponge, Wolf, Tree, Human, Snake, Scissors and Fire
 //Both Basic and Ultimate output either "You won!" "You lost :(" or "It was a tie!"
 
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -181,7 +180,7 @@ public class Main {
         // Print out initial prompt
         System.out.println("Type Play to play Rock, Paper, Scissors!");
 //        System.out.println("Type Play to play Ultimate Rock, Paper, Scissors");
-        System.out.println("Or type History to see the history of your 5 most recent battles!");
+        System.out.println("Or type History to see the history of your recent battles!");
         System.out.println("You may also type Quit to quit...");
         String userChoice = grabInput();
         String lUserChoice = userChoice.toLowerCase();
