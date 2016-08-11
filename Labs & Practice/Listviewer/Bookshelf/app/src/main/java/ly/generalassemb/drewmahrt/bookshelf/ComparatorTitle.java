@@ -10,6 +10,7 @@ public class ComparatorTitle implements Comparator<Book> {
 
     @Override
     public int compare(Book lhs, Book rhs) {
-        //TODO: Write the comparison for the titles
+        //TODONE: Write the comparison for the titles
+        return lhs.getTitle().compareTo(rhs.getTitle());
     }
 }
