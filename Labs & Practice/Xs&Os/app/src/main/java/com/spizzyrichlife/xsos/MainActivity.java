@@ -22,25 +22,47 @@ import android.widget.TextView;
 //  [ ]   Find creative ways to improve the UX of your game.
 
 public class MainActivity extends AppCompatActivity {
-    TextView b1 = (TextView) findViewById(R.id.boxOne);
-    TextView b2 = (TextView) findViewById(R.id.boxTwo);
-    TextView b3 = (TextView) findViewById(R.id.boxThree);
-    TextView b4 = (TextView) findViewById(R.id.boxFour);
-    TextView b5 = (TextView) findViewById(R.id.boxFive);
-    TextView b6 = (TextView) findViewById(R.id.boxSix);
-    TextView b7 = (TextView) findViewById(R.id.boxSeven);
-    TextView b8 = (TextView) findViewById(R.id.boxEight);
-    TextView b9 = (TextView) findViewById(R.id.boxNine);
+    TextView b1;
+    TextView b2;
+    TextView b3;
+    TextView b4;
+    TextView b5;
+    TextView b6;
+    TextView b7;
+    TextView b8;
+    TextView b9;
+
     public int turn = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //TODO: Refactor to use boolean
+        b1 = (TextView) findViewById(R.id.boxOne);
+        b2 = (TextView) findViewById(R.id.boxTwo);
+        b3 = (TextView) findViewById(R.id.boxThree);
+        b4 = (TextView) findViewById(R.id.boxFour);
+        b5 = (TextView) findViewById(R.id.boxFive);
+        b6 = (TextView) findViewById(R.id.boxSix);
+        b7 = (TextView) findViewById(R.id.boxSeven);
+        b8 = (TextView) findViewById(R.id.boxEight);
+        b9 = (TextView) findViewById(R.id.boxNine);
+//      TODO: use wipeBoard to allow recursion and automate replay
+//       wipeBoard();
+//        public void wipeBoard() {
+//            b1.setText("   ");
+//            b2.setText("   ");
+//            b3.setText("   ");
+//            b4.setText("   ");
+//            b5.setText("   ");
+//            b6.setText("   ");
+//            b7.setText("   ");
+//            b8.setText("   ");
+//            b9.setText("   ");
+//        }
+        //TODO: Refactor to use boolean? Instead of turn as an int. (Like GABE)
         // Create 9 clickable buttons
-        // TODO: Make the buttons change the text in the view to either an X or and O depending on turn
-
+        // Make the buttons change the text in the view to either an X or an O depending on turn
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,7 +177,33 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        // HOW TO: Create a button that you can click
+        if(b1.getText()== b2.getText() && b1.getText()==b3.getText()){ //TOP ROW WINS
+
+        }
+        if(b4.getText()== b5.getText() && b4.getText()==b6.getText()){ //MID ROW WINS
+
+        }
+        if(b7.getText()== b8.getText() && b7.getText()==b9.getText()){ //BOTTOM ROW WINS
+
+        }
+        if(b1.getText()== b4.getText() && b1.getText()==b7.getText()){ //LEFT COLUMN WINS
+
+        }
+        if(b2.getText()== b5.getText() && b2.getText()==b8.getText()){ //MID COLUMN WINS
+
+        }
+        if(b3.getText()== b6.getText() && b3.getText()==b9.getText()){ //RIGHT COLUMN WINS
+
+        }
+        if(b1.getText()== b5.getText() && b1.getText()==b9.getText()){ //DIAGONAL 1 WINS
+
+        }
+        if(b3.getText()== b5.getText() && b3.getText()==b7.getText()){ //DIAGONAL 2 WINS
+
+        }
+    }
+
+    // HOW TO: Create a button that you can click
 //        Button button= (Button) findViewById(R.id.standingsButton);
 //        button.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
@@ -163,5 +211,5 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-    }
 }
+
