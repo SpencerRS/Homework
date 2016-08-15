@@ -8,11 +8,11 @@ import android.widget.TextView;
 //Requirements
 //
 //        Your app must:
-//  [ ]   Allow players to mark 9 squares with an X or O when they touch them.
-//  [ ]   Order the players moves into turns, so one player always plays X and the other O.
+//  [X]   Allow players to mark 9 squares with an X or O when they touch them.
+//  [X]   Order the players moves into turns, so one player always plays X and the other O.
 //  [ ]   Create the game logic that is able to determine a win.
 //  [ ]   Create the game logic that is able to determine a draw.
-//  [ ]   Announce the the result of the game when it is finished.
+//  [ ]   Announce the result of the game when it is finished.
 //
 //        Bonus:
 //  [ ]   Add the functionality to refresh the board and play again.
@@ -47,19 +47,7 @@ public class MainActivity extends AppCompatActivity {
         b7 = (TextView) findViewById(R.id.boxSeven);
         b8 = (TextView) findViewById(R.id.boxEight);
         b9 = (TextView) findViewById(R.id.boxNine);
-//      TODO: use wipeBoard to allow recursion and automate replay
-//       wipeBoard();
-//        public void wipeBoard() {
-//            b1.setText("   ");
-//            b2.setText("   ");
-//            b3.setText("   ");
-//            b4.setText("   ");
-//            b5.setText("   ");
-//            b6.setText("   ");
-//            b7.setText("   ");
-//            b8.setText("   ");
-//            b9.setText("   ");
-//        }
+
         //TODO: Refactor to use boolean? Instead of turn as an int. (Like GABE)
         // Create 9 clickable buttons
         // Make the buttons change the text in the view to either an X or an O depending on turn
@@ -177,31 +165,108 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        if(b1.getText()== b2.getText() && b1.getText()==b3.getText()){ //TOP ROW WINS
-
+        if(b1.getText().toString().equals(b2.getText().toString()) && b1.getText().toString().equals(b3.getText().toString())){ //TOP ROW WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b4.getText()== b5.getText() && b4.getText()==b6.getText()){ //MID ROW WINS
-
+        if(b4.getText().toString().equals(b5.getText().toString()) && b4.getText().toString().equals(b6.getText().toString())){ //MID ROW WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b7.getText()== b8.getText() && b7.getText()==b9.getText()){ //BOTTOM ROW WINS
-
+        if(b7.getText().toString().equals(b8.getText().toString()) && b7.getText().toString().equals(b9.getText().toString())){ //BOTTOM ROW WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b1.getText()== b4.getText() && b1.getText()==b7.getText()){ //LEFT COLUMN WINS
-
+        if(b1.getText().toString().equals(b4.getText().toString()) && b1.getText().toString().equals(b7.getText().toString())){ //LEFT COLUMN WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b2.getText()== b5.getText() && b2.getText()==b8.getText()){ //MID COLUMN WINS
-
+        if(b2.getText().toString().equals(b5.getText().toString()) && b2.getText().toString().equals(b8.getText().toString())){ //MID COLUMN WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b3.getText()== b6.getText() && b3.getText()==b9.getText()){ //RIGHT COLUMN WINS
-
+        if(b3.getText().toString().equals(b6.getText().toString()) && b3.getText().toString().equals(b9.getText().toString())){ //RIGHT COLUMN WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b1.getText()== b5.getText() && b1.getText()==b9.getText()){ //DIAGONAL 1 WINS
-
+        if(b1.getText().toString().equals(b5.getText().toString()) && b1.getText().toString().equals(b9.getText().toString())){ //DIAGONAL 1 WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
-        if(b3.getText()== b5.getText() && b3.getText()==b7.getText()){ //DIAGONAL 2 WINS
-
+        if(b3.getText().toString().equals(b5.getText().toString()) && b3.getText().toString().equals(b7.getText().toString())){ //DIAGONAL 2 WINS
+            b1.setText("Y");
+            b2.setText("O");
+            b3.setText("U");
+            b4.setText("W");
+            b5.setText("I");
+            b6.setText("N");
+            b7.setText("M");
+            b8.setText("R.");
+            b9.setText("X/O");
         }
     }
+//    TODO: use wipeBoard to allow recursion and automate replay
+//       wipeBoard();
+//        public void wipeBoard() {
+//            b1.setText("   ");
+//            b2.setText("   ");
+//            b3.setText("   ");
+//            b4.setText("   ");
+//            b5.setText("   ");
+//            b6.setText("   ");
+//            b7.setText("   ");
+//            b8.setText("   ");
+//            b9.setText("   ");
+//        }
 
     // HOW TO: Create a button that you can click
 //        Button button= (Button) findViewById(R.id.standingsButton);
