@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //Requirements
 //
@@ -11,11 +12,11 @@ import android.widget.TextView;
 //  [X]   Allow players to mark 9 squares with an X or O when they touch them.
 //  [X]   Order the players moves into turns, so one player always plays X and the other O.
 //  [X]   Create the game logic that is able to determine a win.
-//  [ ]   Create the game logic that is able to determine a draw.
-//  [ ]   Announce the result of the game when it is finished.
+//  [X]   Create the game logic that is able to determine a draw.
+//  [X]   Announce the result of the game when it is finished.
 //
 //        Bonus:
-//  [ ]   Add the functionality to refresh the board and play again.
+//  [X]   Add the functionality to refresh the board and play again.
 //  [ ]   Create an Activity that allows the players to enter their names.
 //  [ ]   Use the entered names to announce who's turn it is each time.
 //  [ ]   Announce the name of the winner.
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         b1 = (TextView) findViewById(R.id.boxOne);
         b2 = (TextView) findViewById(R.id.boxTwo);
         b3 = (TextView) findViewById(R.id.boxThree);
@@ -48,280 +50,147 @@ public class MainActivity extends AppCompatActivity {
         b8 = (TextView) findViewById(R.id.boxEight);
         b9 = (TextView) findViewById(R.id.boxNine);
 
-        //TODO: Refactor to use boolean? Instead of turn as an int. (Like GABE)
-        // Create 9 clickable buttons
-        // Make the buttons change the text in the view to either an X or an O depending on turn
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b1.setText("X");
-                    turn = 2;
-                } else {
-                    b1.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b1);
             }
         });
+
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b2.setText("X");
-                    turn = 2;
-                } else {
-                    b2.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b2);
             }
         });
 
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b3.setText("X");
-                    turn = 2;
-                } else {
-                    b3.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b3);
             }
         });
+
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b4.setText("X");
-                    turn = 2;
-                } else {
-                    b4.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b4);
             }
         });
 
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b5.setText("X");
-                    turn = 2;
-                } else {
-                    b5.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b5);
             }
         });
 
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b6.setText("X");
-                    turn = 2;
-                } else {
-                    b6.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b6);
             }
         });
 
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b7.setText("X");
-                    turn = 2;
-                } else {
-                    b7.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b7);
             }
         });
 
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b8.setText("X");
-                    turn = 2;
-                } else {
-                    b8.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b8);
             }
         });
 
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (turn == 1) {
-                    b9.setText("X");
-                    turn = 2;
-                } else {
-                    b9.setText("O");
-                    turn = 1;
-                }
-                checkForWin();
+                whenClick(b9);
             }
         });
+
+    }
+
+    public void setWin() {
+        b1.setText("Y");
+        b2.setText("O");
+        b3.setText("U");
+        b4.setText("W");
+        b5.setText("I");
+        b6.setText("N");
+        b7.setText("M");
+        b8.setText("R.");
+        if (turn == 1) {
+            b9.setText("O");
+        } else {
+            b9.setText("X");
+        }
+    }
+
+    public void whenClick(TextView button) {
+        if (button.getText().toString().equals("X")) {
+            Toast.makeText(MainActivity.this, "You must pick an empty square!", Toast.LENGTH_LONG).show();
+        } else if (button.getText().toString().equals("O")) {
+            Toast.makeText(MainActivity.this, "You must pick an empty square!", Toast.LENGTH_LONG).show();
+        } else if (b1.getText().toString().equals("Y")) {
+            wipeBoard();
+        } else if (turn == 1) {
+            button.setText("X");
+            turn = 2;
+        } else {
+            button.setText("O");
+            turn = 1;
+        }
+        checkForWin();
+        checkForTie();
+    }
+
+    public void wipeBoard() {
+        b1.setText("1");
+        b2.setText("2");
+        b3.setText("3");
+        b4.setText("4");
+        b5.setText("5");
+        b6.setText("6");
+        b7.setText("7");
+        b8.setText("8");
+        b9.setText("9");
     }
 
     public void checkForWin() {
-        // TODO: Add ability to detect DRAWS
-        //TODO: Detect WINNER
-        // TODO: Detect a WIN
         if (b1.getText().toString().equals(b2.getText().toString()) && b1.getText().toString().equals(b3.getText().toString())) { //TOP ROW WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
-        }
-        if (b4.getText().toString().equals(b5.getText().toString()) && b4.getText().toString().equals(b6.getText().toString())) { //MID ROW WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
+            setWin();
+        } else if (b4.getText().toString().equals(b5.getText().toString()) && b4.getText().toString().equals(b6.getText().toString())) { //MID ROW WINS
+            setWin();
         }
         if (b7.getText().toString().equals(b8.getText().toString()) && b7.getText().toString().equals(b9.getText().toString())) { //BOTTOM ROW WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
-        }
-        if (b1.getText().toString().equals(b4.getText().toString()) && b1.getText().toString().equals(b7.getText().toString())) { //LEFT COLUMN WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
-        }
-        if (b2.getText().toString().equals(b5.getText().toString()) && b2.getText().toString().equals(b8.getText().toString())) { //MID COLUMN WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
-        }
-        if (b3.getText().toString().equals(b6.getText().toString()) && b3.getText().toString().equals(b9.getText().toString())) { //RIGHT COLUMN WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
-        }
-        if (b1.getText().toString().equals(b5.getText().toString()) && b1.getText().toString().equals(b9.getText().toString())) { //DIAGONAL 1 WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
-        }
-        if (b3.getText().toString().equals(b5.getText().toString()) && b3.getText().toString().equals(b7.getText().toString())) { //DIAGONAL 2 WINS
-            b1.setText("Y");
-            b2.setText("O");
-            b3.setText("U");
-            b4.setText("W");
-            b5.setText("I");
-            b6.setText("N");
-            b7.setText("M");
-            b8.setText("R.");
-            if (turn == 1) {
-                b9.setText("O");
-            } else {
-                b9.setText("X");
-            }
+            setWin();
+        } else if (b1.getText().toString().equals(b4.getText().toString()) && b1.getText().toString().equals(b7.getText().toString())) { //LEFT COLUMN WINS
+            setWin();
+        } else if (b2.getText().toString().equals(b5.getText().toString()) && b2.getText().toString().equals(b8.getText().toString())) { //MID COLUMN WINS
+            setWin();
+        } else if (b3.getText().toString().equals(b6.getText().toString()) && b3.getText().toString().equals(b9.getText().toString())) { //RIGHT COLUMN WINS
+            setWin();
+        } else if (b1.getText().toString().equals(b5.getText().toString()) && b1.getText().toString().equals(b9.getText().toString())) { //DIAGONAL 1 WINS
+            setWin();
+        } else if (b3.getText().toString().equals(b5.getText().toString()) && b3.getText().toString().equals(b7.getText().toString())) { //DIAGONAL 2 WINS
+            setWin();
         }
     }
-//    TODO: use wipeBoard to allow recursion and automate replay
-//       wipeBoard();
-//        public void wipeBoard() {
-//            b1.setText("   ");
-//            b2.setText("   ");
-//            b3.setText("   ");
-//            b4.setText("   ");
-//            b5.setText("   ");
-//            b6.setText("   ");
-//            b7.setText("   ");
-//            b8.setText("   ");
-//            b9.setText("   ");
-//        }
 
-    // HOW TO: Create a button that you can click
-//        Button button= (Button) findViewById(R.id.standingsButton);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,StandingsActivity.class));
-//            }
-//        });
+    public void checkForTie() {
+        if ((stringBox(b1).equals("X") || stringBox(b1).equals("O")) && (stringBox(b2).equals("X") || stringBox(b2).equals("O")) && (stringBox(b3).equals("X") || stringBox(b3).equals("O")) && (stringBox(b4).equals("X") || stringBox(b4).equals("O")) && (stringBox(b5).equals("X") || stringBox(b5).equals("O")) && (stringBox(b6).equals("X") || stringBox(b6).equals("O")) && (stringBox(b7).equals("X") || stringBox(b7).equals("O")) && (stringBox(b8).equals("X") || stringBox(b8).equals("O")) && (stringBox(b9).equals("X") || stringBox(b9).equals("O"))) {
+            Toast.makeText(MainActivity.this, "TIE! Resetting...", Toast.LENGTH_LONG).show();
+            wipeBoard();
+        }
+    }
 
+    public String stringBox(TextView bX) {
+        return bX.getText().toString();
+    }
 }
 
