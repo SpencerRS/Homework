@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AlertDialogs</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="nevermind">Never mind</string>
+    <string name="pick_color">Color Picker</string>
+    <string name="expandable_list">Expandable List</string>
+    <string name="change_the_text">Change The Text</string>
+    <string name="change">Change</string>
+</resources>
