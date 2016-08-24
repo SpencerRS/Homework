@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SQLiteOpenHelperDemo</string>
+    <string name="action_settings">Settings</string>
+</resources>
